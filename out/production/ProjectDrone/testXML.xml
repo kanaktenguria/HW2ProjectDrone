@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mission>
+  <command>takeoff</command>
+  <command>cw 360</command>
+  <command>land</command>
+</mission>
