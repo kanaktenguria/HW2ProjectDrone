@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class ReadXML extends ReadMissionFile {
     @Override
-    public void readFile(DroneCommunicator droneCommunicator) throws IOException, ParserConfigurationException, SAXException {
+    public void readFile(DroneCommunicator droneCommunicator) throws Exception {
 //        return null;
 //        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 //        DocumentBuilder builder = factory.newDocumentBuilder();
@@ -59,21 +59,23 @@ public class ReadXML extends ReadMissionFile {
 //        System.out.println(root.getNodeName());
 
         //Get all employees
-        NodeList nList = document.getElementsByTagName("mission");
-//        System.out.println("============================");
+        NodeList nList = document.getElementsByTagName("task");
+//        System.out.println(nList);
 
-        visitChildNodes(nList);
-    }
-    private static void visitChildNodes(NodeList nList)
-    {
+        String[] result= new String[nList.getLength()];
         for (int temp = 0; temp < nList.getLength(); temp++)
         {
             Node node = nList.item(temp);
             if (node.getNodeType() == Node.ELEMENT_NODE)
-            {   String result=node.getTextContent();
-                System.out.println("kanak");
-                System.out.println(result);
+            {   result[temp] =node.getTextContent();
+//                System.out.println("kanak");
+
             }
         }
+//        for (int temp = 0; temp < nList.getLength(); temp++){
+//            System.out.println(result[temp]);
+//
+//        }
+        executeMission(droneCommunicator, result);
     }
 }
