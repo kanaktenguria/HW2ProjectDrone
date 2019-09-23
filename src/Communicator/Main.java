@@ -27,7 +27,7 @@ public class Main {
 //        int returnVal = fc.showOpenDialog();
 //        System.out.println("");
         System.out.println("1. CSV");
-        System.out.println("2. JSON"); //downuprotate
+        System.out.println("2. XML"); //downuprotate
 //        System.out.println("3. Take off, Move Left, Move 360 Anti Clockwise, Move Right, Land"); //leftrotateright
         System.out.print("Choose file type (Enter number):");
         int fileType= scan.nextInt();
@@ -42,8 +42,8 @@ public class Main {
         }
 
         if(fileType==2){
-            ReadJSON readJSON= new ReadJSON();
-            readMissionFile= readJSON;
+            ReadXML readXML= new ReadXML();
+            readMissionFile= readXML;
 //            MissionDownUpRotate missionDownUpRotate=new MissionDownUpRotate();
 //            flyBehaviour= missionDownUpRotate;
         }
