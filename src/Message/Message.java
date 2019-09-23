@@ -11,7 +11,7 @@ public abstract class Message {
 //    }
 
     public abstract void doAction(DroneCommunicator droneCommunicator) throws Exception;
-
+//    public abstract void getX(int x);
 //    public static Message missionAction(String[] read){
 //
 //        return null;

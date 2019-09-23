@@ -6,10 +6,14 @@ public class MoveUp extends Message {
 //    public MoveUp(DroneCommunicator droneCommunicator) {
 //        this.droneCommunicator = droneCommunicator;
 //    }
-
+    int x;
+    public void MoveUp(int x){
+        this.x=x;
+    }
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
-        droneCommunicator.sendRequest("up 50");
+        String request= "up "+x;
+        droneCommunicator.sendRequest(request);
         Thread.sleep(5000);
     }
 

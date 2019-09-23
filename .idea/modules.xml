@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DroneFlyer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DroneFlyer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DroneFlyer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DroneFlyer.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DroneSimulator.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DroneSimulator.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DroneSimulator.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DroneSimulator.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectDrone.iml" filepath="$PROJECT_DIR$/ProjectDrone.iml" />
     </modules>
   </component>

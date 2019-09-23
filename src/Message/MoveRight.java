@@ -6,7 +6,10 @@ public class MoveRight extends Message {
 //    public MoveRight(DroneCommunicator droneCommunicator) {
 //        this.droneCommunicator = droneCommunicator;
 //    }
-
+    int x;
+    public void MoveRight(int x){
+        this.x=x;
+    }
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
         droneCommunicator.sendRequest("right 50");
