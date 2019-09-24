@@ -1,5 +1,5 @@
 <mission>
     <task>takeoff</task>
-    <task>up 50</task>
+    <task>up</task>
     <task>land</task>
 </mission>

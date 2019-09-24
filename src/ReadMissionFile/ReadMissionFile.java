@@ -15,8 +15,20 @@ public abstract class ReadMissionFile {
         Scanner scan= new Scanner(System.in);
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
+            if(result[i].equals("battery")){
+                Battery battery= new Battery();
+                battery.doAction();
+//                String battery= new Battery().getBattery();
+//                System.out.println("Battery percentage= "+battery);
+            }
             if (result[i].equals("takeoff")) {
                 message = new TakeOff();
+                message.doAction(droneCommunicator);
+            }
+            if (result[i].equals("flip")) {
+                System.out.print("Flip in direction: f,b,r,l->");
+                String direction= scan.next();
+                message = new Flip(direction);
                 message.doAction(droneCommunicator);
             }
             if (result[i].equals("cw")) {

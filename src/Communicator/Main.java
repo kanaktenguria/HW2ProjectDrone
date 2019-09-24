@@ -26,10 +26,11 @@ public class Main {
 //        final JFileChooser fc = new JFileChooser();
 //        int returnVal = fc.showOpenDialog();
 //        System.out.println("");
-        System.out.println("1. CSV");
-        System.out.println("2. XML"); //downuprotate
+        System.out.println("1. Load mission from CSV file");
+        System.out.println("2. Load mission from XML file"); //downuprotate
+        System.out.println("3. Execute your own mission");
 //        System.out.println("3. Take off, Move Left, Move 360 Anti Clockwise, Move Right, Land"); //leftrotateright
-        System.out.print("Choose file type (Enter number):");
+        System.out.print("Enter number:");
         int fileType= scan.nextInt();
 ////        ArrayList<FlyBehaviour> missionArray = new ArrayList<FlyBehaviour>();
 ////        for(int i=0; ){
@@ -46,6 +47,9 @@ public class Main {
             readMissionFile= readXML;
 //            MissionDownUpRotate missionDownUpRotate=new MissionDownUpRotate();
 //            flyBehaviour= missionDownUpRotate;
+        }
+        if(fileType==3){
+            
         }
 //
 //        if(missionNumber==3){
