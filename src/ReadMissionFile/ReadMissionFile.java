@@ -16,8 +16,8 @@ public abstract class ReadMissionFile {
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
             if(result[i].equals("battery")){
-                Battery battery= new Battery();
-                battery.doAction();
+                message= new Battery();
+                message.doAction(droneCommunicator);
 //                String battery= new Battery().getBattery();
 //                System.out.println("Battery percentage= "+battery);
             }

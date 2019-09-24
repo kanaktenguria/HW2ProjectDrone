@@ -2,18 +2,13 @@ package Message;
 
 import Communicator.DroneCommunicator;
 
-public class Battery {
+public class Battery extends Message {
 //    String battery=null;
-
-    public void doAction() throws Exception {
-        try {
-            DroneCommunicator drone = new DroneCommunicator("127.0.0.1", 8889);
-            drone.sendRequest("battery?");
-            String battery = drone.receiveRequest();
-            System.out.println("Battery percentage= " + battery);
-        }catch(NullPointerException e){
-            System.out.println(e);
-        }
+    @Override
+    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+        droneCommunicator.sendRequest("battery?");
+        String battery= droneCommunicator.receiveRequest();
+        System.out.println("Battery percentage= "+ battery);
     }
 //    public String getBattery(){
 //        return battery;
