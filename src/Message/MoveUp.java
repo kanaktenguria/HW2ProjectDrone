@@ -7,7 +7,7 @@ public class MoveUp extends Message {
 //        this.droneCommunicator = droneCommunicator;
 //    }
     int x;
-    public void MoveUp(int x){
+    public MoveUp(int x){
         this.x=x;
     }
     @Override

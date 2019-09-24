@@ -7,9 +7,16 @@ public class RotateClockWise extends Message {
 //        this.droneCommunicator = droneCommunicator;
 //    }
 
+    int x;
+
+    public RotateClockWise(int x) {
+        this.x = x;
+    }
+
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
-        droneCommunicator.sendRequest("cw 360");
+        String request= "cw "+x;
+        droneCommunicator.sendRequest(request);
         Thread.sleep(5000);
     }
 

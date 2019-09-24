@@ -6,10 +6,14 @@ public class MoveBackward extends Message {
 //    public MoveBackward(DroneCommunicator droneCommunicator) {
 //        this.droneCommunicator = droneCommunicator;
 //    }
-
+int x;
+    public MoveBackward(int x){
+        this.x=x;
+    }
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
-        droneCommunicator.sendRequest("back 50");
+        String request= "back "+x;
+        droneCommunicator.sendRequest(request);
 //        droneCommunicator.getState();
         Thread.sleep(5000);
     }

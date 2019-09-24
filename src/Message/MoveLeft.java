@@ -7,12 +7,13 @@ public class MoveLeft extends Message {
 //        this.droneCommunicator = droneCommunicator;
 //    }
     int x;
-    public void MoveLeft(int x){
+    public MoveLeft(int x){
         this.x=x;
     }
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
-        droneCommunicator.sendRequest("left 50");
+        String request= "left "+x;
+        droneCommunicator.sendRequest(request);
 //        droneCommunicator.getState();
         Thread.sleep(5000);
     }

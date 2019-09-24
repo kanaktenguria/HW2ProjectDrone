@@ -6,10 +6,16 @@ public class RotateAntiClockWise extends Message {
 //    public RotateAntiClockWise(DroneCommunicator droneCommunicator) {
 //        this.droneCommunicator = droneCommunicator;
 //    }
+int x;
+
+    public RotateAntiClockWise(int x) {
+        this.x = x;
+    }
 
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
-        droneCommunicator.sendRequest("ccw 360");
+        String request= "ccw "+x;
+        droneCommunicator.sendRequest(request);
         Thread.sleep(5000);
     }
 
