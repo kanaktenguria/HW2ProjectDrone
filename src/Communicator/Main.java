@@ -6,8 +6,6 @@ import FlyBehaviour.MissionForwardLeft;
 import FlyBehaviour.MissionLeftRotateRight;
 import ReadMissionFile.ReadMissionFile;
 import ReadMissionFile.*;
-
-import javax.swing.*;
 import java.util.Scanner;
 
 
@@ -17,18 +15,15 @@ public class Main {
         FlyBehaviour flyBehaviour=null;
         ReadMissionFile readMissionFile = null;
         System.out.print("Enter the IP address:");
-        String iPAddress = scan.next();
+        String IPAddress = scan.next();
 
-        System.out.print("Enter Port Number:");
-        int dronePort = scan.nextInt();
-        int udpStatePort= 8890;
-        String stateIPAddress="0.0.0.0";
-//        final JFileChooser fc = new JFileChooser();
-//        int returnVal = fc.showOpenDialog();
-//        System.out.println("");
+        System.out.print("Enter senders port Number:");
+        int senderPort = scan.nextInt();
+//        int udpStatePort= 8890;
+//        String stateIPAddress="0.0.0.0";
         System.out.println("1. Load mission from CSV file");
         System.out.println("2. Load mission from XML file"); //downuprotate
-        System.out.println("3. Execute your own mission");
+//        System.out.println("3. Execute your own mission");
 //        System.out.println("3. Take off, Move Left, Move 360 Anti Clockwise, Move Right, Land"); //leftrotateright
         System.out.print("Enter number:");
         int fileType= scan.nextInt();
@@ -49,7 +44,7 @@ public class Main {
 //            flyBehaviour= missionDownUpRotate;
         }
         if(fileType==3){
-            
+
         }
 //
 //        if(missionNumber==3){
@@ -58,7 +53,10 @@ public class Main {
 //        }
 
         Flier flier=new Flier();
-        flier.initialize(iPAddress, dronePort);
+//        Thread thread= new Thread(flier);
+
+        flier.initialize(IPAddress, senderPort);
+//        thread.start();
 //        flier.doMission(flyBehaviour);
         flier.readFile(readMissionFile);
 //        flier.getState();

@@ -5,36 +5,61 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class DroneCommunicator {
-    private int dronePort;
-    private InetAddress droneAddress;
+    private int destinationPort;
+    private InetAddress IPAddress;
     DatagramSocket udpClient;
-//    private DatagramPacket datagramPacket;
+    private InetAddress senderAddress;
+    private int senderPort;
+    //    private DatagramPacket datagramPacket;
 //    String request= null;
-    private String reply = null;
+    private String reply;
     private String iPAddress;
 
+    public DroneCommunicator() {
 
-    public DroneCommunicator(String iPAddress, int dronePort){
-        this.iPAddress= iPAddress;
-        this.dronePort= dronePort;
     }
+
+    public void initializeSimulator(int port) throws SocketException, UnknownHostException {
+        udpClient = new DatagramSocket(port);
+
+//        udpClient.bind(new InetSocketAddress("127.0.0.1", 8889));
+    }
+
+    public int getSenderPort() {
+        return senderPort;
+    }
+
+    public InetAddress getSenderAddress() {
+        return senderAddress;
+    }
+
+    public void setAddress(InetAddress senderAddress, int senderPort) {
+        this.IPAddress = senderAddress;
+        this.senderPort = senderPort;
+    }
+
+    public DroneCommunicator(String iPAddress, int senderPort) throws SocketException {
+        this.iPAddress = iPAddress;
+        this.senderPort = senderPort;
+
+    }
+
 
     public void getState() throws IOException {
 //        byte[] bytesToSent = request.getBytes(StandardCharsets.UTF_8);
-        InetAddress stateDroneAddress = InetAddress.getByName("0.0.0.0");
-        int udpStatePort= 8890;
+        InetAddress stateDroneAddress = InetAddress.getByName("127.0.0.1");
+        int udpStatePort = 8890;
 //        byte[] bytesToSent= new byte[256];
 //        DatagramPacket datagramPacket = new DatagramPacket(bytesToSent, bytesToSent.length, stateDroneAddress, udpStatePort);
 //        udpClient.send(datagramPacket);
 //        System.out.println("Sent " + request + " bytes to Drone");
-        DatagramSocket socket= new DatagramSocket(8890);
+        DatagramSocket socket = new DatagramSocket(8890);
 
         byte[] bytesReceived = new byte[1024];
-        DatagramPacket datagramPacket = new DatagramPacket(bytesReceived, 64, stateDroneAddress, udpStatePort);
+        DatagramPacket datagramPacket = new DatagramPacket(bytesReceived, 1024, stateDroneAddress, udpStatePort);
         try {
             socket.receive(datagramPacket);
-        }
-        catch (SocketTimeoutException ex) {
+        } catch (SocketTimeoutException ex) {
             datagramPacket = null;
         }
         if (datagramPacket != null) {
@@ -58,14 +83,15 @@ public class DroneCommunicator {
 //        System.out.print("KANAK");
 //        System.out.print(received+"Kanak");
     }
+
     public void initialize() throws Exception {
-        udpClient =  new DatagramSocket();
-        droneAddress = InetAddress.getByName(iPAddress);
+        udpClient = new DatagramSocket();
+        IPAddress = InetAddress.getByName(iPAddress);
         udpClient.setSoTimeout(1000);
         int maxRetries = 3;
-        while (maxRetries > 0){
-        sendRequest("command");
-        String reply= receiveRequest();
+        while (maxRetries > 0) {
+            sendRequest("command");
+            String reply = receiveRequest();
             if (reply.equals("ok")) {
                 System.out.println("Entering command mode.. \nSending mission commands.");
                 break;
@@ -74,24 +100,26 @@ public class DroneCommunicator {
             maxRetries--;
         }
     }
-    public int getLocalPort(){
+
+    public int getLocalPort() {
         return udpClient.getLocalPort();
     }
 
-    public void sendRequest(String request) throws Exception{
+    public void sendRequest(String request) throws Exception {
         byte[] bytesToSent = request.getBytes(StandardCharsets.UTF_8);
-        DatagramPacket datagramPacket = new DatagramPacket(bytesToSent, bytesToSent.length, droneAddress, dronePort);
+        DatagramPacket datagramPacket = new DatagramPacket(bytesToSent, bytesToSent.length, IPAddress, senderPort);
         udpClient.send(datagramPacket);
         System.out.println("Sent " + request + " bytes to Drone"); // with address " + droneAddress.toString() + ":" + dronePort);
     }
 
-    public String receiveRequest() throws Exception{
+    public String receiveRequest() throws Exception {
         byte[] bytesReceived = new byte[64];
         DatagramPacket datagramPacket = new DatagramPacket(bytesReceived, 64);
         try {
             udpClient.receive(datagramPacket);
-        }
-        catch (SocketTimeoutException ex) {
+            this.senderAddress = datagramPacket.getAddress();
+            this.senderPort = datagramPacket.getPort();
+        } catch (SocketTimeoutException ex) {
             datagramPacket = null;
         }
         if (datagramPacket != null) {
@@ -101,9 +129,4 @@ public class DroneCommunicator {
         }
         return reply;
     }
-
-    public InetAddress getDroneAddress() {
-        return droneAddress;
-    }
 }
-

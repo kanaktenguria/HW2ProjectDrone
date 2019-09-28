@@ -14,9 +14,6 @@ public class ReadCSV extends ReadMissionFile {
     public void readFile(DroneCommunicator droneCommunicator) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader("src/sampledata1.csv"));
         String fileName;
-//        String strLine = null;
-//        StringTokenizer st = null;
-//        int lineNumber = 0, tokenNumber = 0;
         fileName = br.readLine();
         String[] result = fileName.split(",");
         executeMission(droneCommunicator,result);
