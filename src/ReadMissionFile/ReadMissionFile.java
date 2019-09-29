@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class ReadMissionFile {
+//    public abstract void readFile(DroneCommunicator droneCommunicator) throws Exception;
+
     public abstract void readFile(DroneCommunicator droneCommunicator) throws Exception;
 
     public void executeMission(DroneCommunicator droneCommunicator, String[] result) throws Exception {
