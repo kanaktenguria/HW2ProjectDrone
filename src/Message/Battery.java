@@ -7,8 +7,12 @@ public class Battery extends Message {
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
         droneCommunicator.sendRequest("battery?");
-        String battery= droneCommunicator.receiveRequest();
-        System.out.println("Battery percentage= "+ battery);
+        System.out.println(droneCommunicator.receiveRequest()+"received");
+    }
+
+    @Override
+    public String getMessageType() {
+        return null;
     }
 //    public String getBattery(){
 //        return battery;

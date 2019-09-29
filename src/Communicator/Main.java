@@ -13,6 +13,7 @@ public class Main {
     public static void main(String...args)throws Exception{
         Scanner scan = new Scanner(System.in);
         FlyBehaviour flyBehaviour=null;
+        DroneState droneState=new DroneState();
         ReadMissionFile readMissionFile = null;
         System.out.print("Enter the IP address:");
         String IPAddress = scan.next();
@@ -53,10 +54,11 @@ public class Main {
 //        }
 
         Flier flier=new Flier();
-//        Thread thread= new Thread(flier);
+        Thread thread= new Thread(flier);
 
         flier.initialize(IPAddress, senderPort);
-//        thread.start();
+        flier.setDroneState(droneState);
+        thread.start();
 //        flier.doMission(flyBehaviour);
         flier.readFile(readMissionFile);
 //        flier.getState();

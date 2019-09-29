@@ -10,8 +10,14 @@ public class Land extends Message {
     @Override
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
         droneCommunicator.sendRequest("land");
+        System.out.println(droneCommunicator.receiveRequest()+"received");
 //        droneCommunicator.getState();
         Thread.sleep(5000);
+    }
+
+    @Override
+    public String getMessageType() {
+        return null;
     }
 
 

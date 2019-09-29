@@ -21,65 +21,65 @@ public abstract class ReadMissionFile {
 //                String battery= new Battery().getBattery();
 //                System.out.println("Battery percentage= "+battery);
             }
-            if (result[i].equals("takeoff")) {
+            else if (result[i].equals("takeoff")) {
                 message = new TakeOff();
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("flip")) {
+            else if (result[i].equals("flip")) {
                 System.out.print("Flip in direction: f,b,r,l->");
                 String direction= scan.next();
                 message = new Flip(direction);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("cw")) {
+            else if (result[i].equals("cw")) {
                 System.out.print("Rotate x degrees clockwise. Enter x=");
                 int x= scan.nextInt();
                 message = new RotateClockWise(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("ccw")) {
+            else if (result[i].equals("ccw")) {
                 System.out.print("Rotate x degrees anti-clockwise. Enter x=");
                 int x= scan.nextInt();
                 message = new RotateAntiClockWise(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("up")) {
+            else if (result[i].equals("up")) {
                 System.out.print("Move x cm up. Enter x=");
                 int x= scan.nextInt();
                 message = new MoveUp(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("right")) {
+            else if (result[i].equals("right")) {
                 System.out.print("Move x cm right. Enter x=");
                 int x= scan.nextInt();
                 message = new MoveRight(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("left")) {
+            else if (result[i].equals("left")) {
                 System.out.print("Move x cm left. Enter x=");
                 int x= scan.nextInt();
                 message = new MoveLeft(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("forward")) {
+            else if (result[i].equals("forward")) {
                 System.out.print("Move x cm forward. Enter x=");
                 int x= scan.nextInt();
                 message = new MoveForward(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("down")) {
+            else if (result[i].equals("down")) {
                 System.out.print("Move x cm down. Enter x=");
                 int x= scan.nextInt();
                 message = new MoveDown(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("back")) {
+            else if (result[i].equals("back")) {
                 System.out.print("Move x cm back. Enter x=");
                 int x= scan.nextInt();
                 message = new MoveBackward(x);
                 message.doAction(droneCommunicator);
             }
-            if (result[i].equals("land")) {
+            else if (result[i].equals("land")) {
                 message = new Land();
                 message.doAction(droneCommunicator);
             }

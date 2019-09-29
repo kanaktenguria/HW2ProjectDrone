@@ -1,32 +1,85 @@
 package Simulator;
 
 import Communicator.DroneCommunicator;
+import Communicator.DroneState;
+import Message.Status;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class Simulator {
+public class Simulator implements Runnable{
+    public Simulator(){
+
+    }
     public static void main(String[] args) throws Exception {
-
-        DroneCommunicator droneCommunicator= new DroneCommunicator();
-        Scanner scan= new Scanner(System.in);
-
-        droneCommunicator.initializeSimulator(8889);
-        String reply=droneCommunicator.receiveRequest();
-        InetAddress senderAddress= droneCommunicator.getSenderAddress();
-        int senderPort= droneCommunicator.getSenderPort();
-        droneCommunicator.setAddress(senderAddress,senderPort);
-        System.out.println("Inside simulator"+reply);
-        if(reply.equals("command")) {
-            System.out.println("Inside command");
+        Simulator sendState= new Simulator();
+        Thread thread= new Thread(sendState);
+        thread.start();
+        Boolean commandMode= false;
+        Boolean takenOff= false;
+        DroneCommunicator droneCommunicator= new DroneCommunicator(8889);
+        DroneState droneState = new DroneState();
+//        droneCommunicator.initializeSimulator(8889);
+        while(true) {
+            String reply = droneCommunicator.receiveRequest();
+            System.out.println(reply);
+            InetAddress senderAddress = droneCommunicator.getSenderAddress();
+            int destinationPort = droneCommunicator.getDestinationPort();
+            droneCommunicator.setAddress(senderAddress, destinationPort);
             droneCommunicator.sendRequest("ok");
+
+
+
+//            System.out.println("Inside simulator" + reply);
+//            if (reply.equals("command")) {
+//                commandMode = true;
+//                System.out.println("Inside command");
+//                droneCommunicator.sendRequest("ok");
+//            } else if (commandMode == true) {
+//                System.out.println("kanak");
+//                reply = droneCommunicator.receiveRequest();
+//                if (reply.equals("takeoff")) {
+//                    System.out.println("Drone has taken off");
+//                    droneCommunicator.sendRequest("error");
+//                }
+//            } else {
+//                System.out.println("Put drone in command mode.");
+//            }
+
         }
 
 
+
+    }
+
+    @Override
+    public void run() {
+        Status sendStatus= new Status(0,0,1,10,10,10,5,50,40,80,99,15.2,56,25.5,25.5,25.5);
+        String currentStatus=sendStatus.getMessageText();
+        DroneCommunicator sendStatusCommunicator= null;
+        try {
+            sendStatusCommunicator = new DroneCommunicator("127.0.0.1",8890);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        while(true) {
+            try {
+                sendStatusCommunicator.sendRequest(currentStatus);
+//                System.out.println();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
 

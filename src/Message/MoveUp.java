@@ -14,7 +14,13 @@ public class MoveUp extends Message {
     public void doAction(DroneCommunicator droneCommunicator) throws Exception {
         String request= "up "+x;
         droneCommunicator.sendRequest(request);
+        System.out.println(droneCommunicator.receiveRequest()+"received");
         Thread.sleep(5000);
+    }
+
+    @Override
+    public String getMessageType() {
+        return null;
     }
 
 //    @Override
