@@ -1,5 +1,6 @@
 <mission>
     <task>takeoff</task>
     <task>up</task>
+    <task>cw</task>
     <task>land</task>
 </mission>

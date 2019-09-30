@@ -20,11 +20,15 @@ class Flier implements Runnable{
         droneCommunicator = new DroneCommunicator(IPAddress, senderPort);
         droneCommunicator.initialize();  }
 
+//    void droneTakeoff(FlyBehaviour flyBehaviour) throws Exception {
+//        flyBehaviour.droneTakeoff(droneCommunicator);
+//    }
 //    void doMission(FlyBehaviour flyBehaviour) throws Exception {
 //        flyBehaviour.doMission(droneCommunicator);
 //    }
 
     void readFile(ReadMissionFile readMissionFile) throws Exception {
+//        System.out.println("Battery="+ status.getBatteryPercentage() );
         readMissionFile.readFile(droneCommunicator);
 //        Message message= Message.missionAction(result);
 
@@ -44,10 +48,12 @@ class Flier implements Runnable{
 //            State.initializeFlyer(8890);
                 String reply = State.receiveRequest();
                 this.status = new Status(reply);
+//                System.out.println(reply);
                 droneState.updateFlyingInfo(this.status);
                 byte[] bytesReceived=droneCommunicator.getBytesReceived();
 //                status.getMessageText();
                 status.decode(bytesReceived,0,1024);
+
 //                System.out.println("kanak"+ reply);
             } catch (Exception e) {
                 e.printStackTrace();

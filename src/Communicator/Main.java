@@ -59,6 +59,7 @@ public class Main {
         flier.initialize(IPAddress, senderPort);
         flier.setDroneState(droneState);
         thread.start();
+//        flier.droneTakeoff(flyBehaviour);
 //        flier.doMission(flyBehaviour);
         flier.readFile(readMissionFile);
 //        flier.getState();

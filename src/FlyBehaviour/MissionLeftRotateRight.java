@@ -3,12 +3,26 @@ import Message.*;
 import Communicator.DroneCommunicator;
 
 public class MissionLeftRotateRight extends FlyBehaviour {
+    @Override
+    public void droneTakeoff() {
+
+    }
+
+    @Override
+    public void doMission() throws Exception {
+
+    }
+
+    @Override
+    public void droneLand() {
+
+    }
 
 //    public MissionLeftRotateRight(){
 //
 //    }
-    @Override
-    public void doMission(DroneCommunicator droneCommunicator) throws Exception {
+//    @Override
+//    public void doMission(DroneCommunicator droneCommunicator) throws Exception {
 //        Message message;
 ////        message= new CommandMode();
 ////        message.doAction(droneCommunicator);
@@ -23,5 +37,5 @@ public class MissionLeftRotateRight extends FlyBehaviour {
 //        message= new Land();
 //        message.doAction(droneCommunicator);
 //        System.out.println("Mission completed.");
-    }
+//    }
 }

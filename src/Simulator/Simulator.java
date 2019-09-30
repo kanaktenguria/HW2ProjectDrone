@@ -29,7 +29,9 @@ public class Simulator implements Runnable{
             InetAddress senderAddress = droneCommunicator.getSenderAddress();
             int destinationPort = droneCommunicator.getDestinationPort();
             droneCommunicator.setAddress(senderAddress, destinationPort);
-            droneCommunicator.sendRequest("ok");
+            CommandHandler commandHandler= new CommandHandler();
+            commandHandler.selectCommand(reply, droneCommunicator);
+
 
 
 

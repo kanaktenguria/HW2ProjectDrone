@@ -17,7 +17,7 @@ public abstract class ReadMissionFile {
         Scanner scan= new Scanner(System.in);
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
-            if(result[i].equals("battery")){
+            if(result[i].equals("battery?")){
                 message= new Battery();
                 message.doAction(droneCommunicator);
 //                String battery= new Battery().getBattery();
