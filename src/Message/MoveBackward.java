@@ -14,11 +14,8 @@ public class MoveBackward extends Message {
         String request= "back "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");
-        double yAxis=x;
-        double xAxis=droneState.getPositionX();
-        yAxis=droneState.getPositionY()-yAxis;
-        double zAxis=droneState.getPositionZ();
-        droneState.move(xAxis,yAxis,zAxis);
+        double yAxis=-x;
+        droneState.move(0,yAxis,0);
 //        droneCommunicator.getState();
         Thread.sleep(5000);
     }

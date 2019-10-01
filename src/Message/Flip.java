@@ -18,21 +18,18 @@ public class Flip extends Message{
 
             droneCommunicator.sendRequest(request);
             System.out.println(droneCommunicator.receiveRequest() + "received");
-            double xAxis = droneState.getPositionX();
-            double yAxis = droneState.getPositionY();
-            double zAxis = droneState.getPositionZ();
             if (direction.equals("f")) {
-                yAxis = yAxis+ 10.0;
-                droneState.move(xAxis, yAxis, zAxis);
+                double yAxis = + 10.0;
+                droneState.move(0, yAxis,0);
             } else if (direction.equals("b")) {
-                yAxis =yAxis- 10.0;
-                droneState.move(xAxis, yAxis, zAxis);
+                double yAxis = - 10.0;
+                droneState.move(0, yAxis, 0);
             } else if (direction.equals("l")) {
-                xAxis= xAxis +10;
-                droneState.move(xAxis, yAxis, zAxis);
+                double xAxis= +10;
+                droneState.move(xAxis, 0,0);
             } else if (direction.equals("r")) {
-                xAxis= xAxis - 10;
-                droneState.move(xAxis, yAxis, zAxis);
+                double xAxis= - 10;
+                droneState.move(xAxis, 0, 0);
             }
         }else{
             System.out.println("Invalid Command.");

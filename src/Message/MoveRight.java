@@ -14,11 +14,8 @@ public class MoveRight extends Message {
         String request= "right "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");
-        double yAxis=droneState.getPositionY();
-        double xAxis=x;
-        xAxis=droneState.getPositionX()-xAxis;
-        double zAxis=droneState.getPositionZ();
-        droneState.move(xAxis,yAxis,zAxis);
+        double xAxis=-x;
+        droneState.move(xAxis,0,0);
         Thread.sleep(5000);
     }
 
