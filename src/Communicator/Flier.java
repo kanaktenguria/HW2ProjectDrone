@@ -1,18 +1,19 @@
 package Communicator;
 import FlyBehaviour.FlyBehaviour;
 //import ReadMissionFile.ReadFileTemplate;
-import Message.Message;
 import Message.Status;
 import ReadMissionFile.ReadMissionFile;
+import FlyBehaviour.MissionDownUp;
+import FlyBehaviour.MissionForwardLeft;
+import FlyBehaviour.MissionLeftRotateRight;
 
-import java.io.IOException;
 import java.net.SocketException;
 
 class Flier implements Runnable{
     private DroneCommunicator droneCommunicator;
     private DroneState droneState;
     private Status status;
-
+    FlyBehaviour flyBehaviour;
     public void setDroneState(DroneState droneState){
         this.droneState= droneState;
     }
@@ -23,24 +24,29 @@ class Flier implements Runnable{
 
     }
 
-//    void droneTakeoff(FlyBehaviour flyBehaviour) throws Exception {
-//        flyBehaviour.droneTakeoff(droneCommunicator);
-//    }
-//    void doMission(FlyBehaviour flyBehaviour) throws Exception {
-//        flyBehaviour.doMission(droneCommunicator);
-//    }
+    public void executePreExistingMission(int missionChoice) throws Exception {
+        switch (missionChoice){
+            case 1:
+                MissionDownUp missionDownUp = new MissionDownUp();
+                flyBehaviour= missionDownUp;
+                break;
+            case 2:
+                MissionForwardLeft missionForwardLeft= new MissionForwardLeft();
+                flyBehaviour=missionForwardLeft;
+                break;
+            case 3:
+                MissionLeftRotateRight missionLeftRotateRight= new MissionLeftRotateRight();
+                flyBehaviour=missionLeftRotateRight;
+                break;
+        }
+        flyBehaviour.setDroneCommunicatorAndState(droneCommunicator,droneState);
+        flyBehaviour.flyBehaviourTemplate();
+    }
 
     void readFile(ReadMissionFile readMissionFile) throws Exception {
-//        System.out.println("Battery="+ status.getBatteryPercentage() );
-
-
-//        System.out.println(droneState.getBatteryPercentage());
         readMissionFile.readFile(droneCommunicator, droneState);
-        
-//        Message message= Message.missionAction(result);
+   }
 
-    }
-//
     @Override
     public void run() {
         DroneCommunicator State = null;
@@ -81,7 +87,5 @@ class Flier implements Runnable{
     public void setStatus(Status status){
         this.status=status;
     }
-//    void getState() throws Exception{
-//
-//    }
+
 }

@@ -2,19 +2,15 @@ package Message;
 import Communicator.DroneCommunicator;
 import Communicator.DroneState;
 
-public class RotateAntiClockWise extends Message {
-//    private DroneCommunicator droneCommunicator;
-//    public RotateAntiClockWise(DroneCommunicator droneCommunicator) {
-//        this.droneCommunicator = droneCommunicator;
-//    }
-int x;
+import java.util.Scanner;
 
-    public RotateAntiClockWise(int x) {
-        this.x = x;
-    }
+public class RotateAntiClockWise extends Message {
 
     @Override
     public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
+        System.out.print("Rotate x degrees anti-clockwise. Enter x=");
+        Scanner scan= new Scanner(System.in);
+        int x= scan.nextInt();
         String request= "ccw "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");
@@ -26,8 +22,4 @@ int x;
         return null;
     }
 
-//    @Override
-//    public String getMessageType() {
-//        return null;
-//    }
 }

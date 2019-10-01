@@ -16,15 +16,8 @@ public class MissionForwardLeft extends FlyBehaviour {
 ////        message.doAction(droneCommunicator);
 //////        message.encode();
 //////        droneCommunicator.getState();
-////        message=new MoveForward();
-////        message.doAction(droneCommunicator);
-//////        droneCommunicator.getState();
-////        message= new MoveLeft();
-////        message.doAction(droneCommunicator);
-//////        droneCommunicator.getState();
-////        message=new MoveBackward();
-////        message.doAction(droneCommunicator);
-//////        droneCommunicator.getState();
+
+//        droneCommunicator.getState();
 ////        message= new Land();
 ////        message.doAction(droneCommunicator);
 ////        droneCommunicator.getState();
@@ -32,17 +25,13 @@ public class MissionForwardLeft extends FlyBehaviour {
 //    }
 
     @Override
-    public void droneTakeoff() {
-
-    }
-
-    @Override
     public void doMission() throws Exception {
-
+        message=new MoveForward();
+        message.doAction(droneCommunicator,droneState);
+        message= new MoveLeft();
+        message.doAction(droneCommunicator,droneState);
+        message=new MoveBackward();
+        message.doAction(droneCommunicator,droneState);
     }
 
-    @Override
-    public void droneLand() {
-
-    }
 }

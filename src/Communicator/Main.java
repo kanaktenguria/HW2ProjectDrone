@@ -1,9 +1,5 @@
 package Communicator;
 
-import FlyBehaviour.FlyBehaviour;
-import FlyBehaviour.MissionDownUpRotate;
-import FlyBehaviour.MissionForwardLeft;
-import FlyBehaviour.MissionLeftRotateRight;
 import ReadMissionFile.ReadMissionFile;
 import ReadMissionFile.*;
 import java.util.Scanner;
@@ -12,7 +8,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String...args)throws Exception{
         Scanner scan = new Scanner(System.in);
-        FlyBehaviour flyBehaviour=null;
         DroneState droneState=new DroneState();
         ReadMissionFile readMissionFile = null;
         System.out.print("Enter the IP address:");
@@ -20,49 +15,39 @@ public class Main {
 
         System.out.print("Enter senders port Number:");
         int senderPort = scan.nextInt();
-//        int udpStatePort= 8890;
-//        String stateIPAddress="0.0.0.0";
         System.out.println("1. Load mission from CSV file");
         System.out.println("2. Load mission from XML file"); //downuprotate
-//        System.out.println("3. Execute your own mission");
-//        System.out.println("3. Take off, Move Left, Move 360 Anti Clockwise, Move Right, Land"); //leftrotateright
+        System.out.println("3. Execute pre existing mission:");
+//        //leftrotateright
         System.out.print("Enter number:");
+
         int fileType= scan.nextInt();
-////        ArrayList<FlyBehaviour> missionArray = new ArrayList<FlyBehaviour>();
-////        for(int i=0; ){
-////
-////        }
-        if(fileType==1){
-//            MissionForwardLeft missionForwardLeft=new MissionForwardLeft();
-            ReadCSV readCSV= new ReadCSV();
-            readMissionFile= readCSV;
-        }
-
-        if(fileType==2){
-            ReadXML readXML= new ReadXML();
-            readMissionFile= readXML;
-//            MissionDownUpRotate missionDownUpRotate=new MissionDownUpRotate();
-//            flyBehaviour= missionDownUpRotate;
-        }
-//        if(fileType==3){
-//
-//        }
-//
-//        if(missionNumber==3){
-//            MissionLeftRotateRight missionLeftRotateRight=new MissionLeftRotateRight();
-//            flyBehaviour= missionLeftRotateRight;
-//        }
-
         Flier flier=new Flier();
-
         flier.setDroneState(droneState);
         flier.initialize(IPAddress, senderPort);
         Thread thread= new Thread(flier);
         thread.start();
         Thread.sleep(5000);
-//        flier.droneTakeoff(flyBehaviour);
-//        flier.doMission(flyBehaviour);
-        flier.readFile(readMissionFile);
-//        flier.getState();
+
+        if(fileType==1){
+            ReadCSV readCSV= new ReadCSV();
+            readMissionFile= readCSV;
+            flier.readFile(readMissionFile);
+        }
+
+        if(fileType==2){
+            ReadXML readXML= new ReadXML();
+            readMissionFile= readXML;
+            flier.readFile(readMissionFile);
+        }
+
+        if(fileType==3){
+            System.out.println("1. Move Down, Move Up");
+            System.out.println("2. Move Forward, Move Left, Move Backward");
+            System.out.println("3. Move Left, Move Anti Clockwise, Move Right");
+            int missionChoice= scan.nextInt();
+            flier.executePreExistingMission(missionChoice);
+        }
+
     }
 }

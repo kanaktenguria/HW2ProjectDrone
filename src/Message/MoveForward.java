@@ -2,23 +2,21 @@ package Message;
 import Communicator.DroneCommunicator;
 import Communicator.DroneState;
 
+import java.util.Scanner;
+
 public class MoveForward extends Message {
-//    private DroneCommunicator droneCommunicator;
-//    public MoveForward(DroneCommunicator droneCommunicator) {
-//        this.droneCommunicator = droneCommunicator;
-//    }
-int x;
-    public MoveForward(int x){
-        this.x=x;
-    }
+
     @Override
     public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
+        System.out.print("Move x cm forward. Enter x=");
+        Scanner scan= new Scanner(System.in);
+        int x= scan.nextInt();
         String request= "forward "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");
         double yAxis=x;
         double xAxis=droneState.getPositionX();
-        yAxis+=droneState.getPositionY();
+        yAxis=droneState.getPositionY()+yAxis;
         double zAxis=droneState.getPositionZ();
         droneState.move(xAxis,yAxis,zAxis);
 //        droneCommunicator.getState();

@@ -1,9 +1,10 @@
 package FlyBehaviour;
+import Communicator.DroneState;
 import Message.*;
 import Communicator.DroneCommunicator;
 
-public class MissionDownUpRotate extends FlyBehaviour {
-    private DroneCommunicator droneCommunicator;
+public class MissionDownUp extends FlyBehaviour {
+
     //    public MissionDownUpRotate(){
 //
 //
@@ -28,21 +29,16 @@ public class MissionDownUpRotate extends FlyBehaviour {
 ////        System.out.println("Mission completed.");
 //    }
 
-//    public void setDroneCommunicator(){
-//    super.setDroneCommunicator(DroneCommunicator droneCommunicator);
-//    }
-    @Override
-    public void droneTakeoff() {
-
-    }
 
     @Override
     public void doMission() throws Exception {
-
+        message=new MoveDown();
+        message.doAction(droneCommunicator,droneState);
+        message= new MoveUp();
+        message.doAction(droneCommunicator,droneState);
+//        message=new RotateClockWise();
+//        message.doAction(droneCommunicator,droneState);
     }
 
-    @Override
-    public void droneLand() {
 
-    }
 }
