@@ -48,7 +48,7 @@ public class CommandHandler {
             correctCommand=true;
         }
         else if (keyword[0].equals("flip")) {
-            System.out.println("Drone has moved "+keyword+"direction");
+            System.out.println("Drone has moved "+keyword.toString()+"direction");
             correctCommand=true;
         }
         else if (keyword[0].equals("land")) {

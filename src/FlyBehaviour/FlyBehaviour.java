@@ -7,7 +7,7 @@ public abstract class FlyBehaviour {
     public void setDroneCommunicator(DroneCommunicator droneCommunicator){
         this.droneCommunicator= droneCommunicator;
     }
-    public final void MissionTemplate() throws Exception {
+    public final void missionTemplate() throws Exception {
         droneTakeoff();
         doMission();
         droneLand();
