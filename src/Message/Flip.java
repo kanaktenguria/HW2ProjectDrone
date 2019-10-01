@@ -10,8 +10,8 @@ public class Flip extends Message{
     }
     @Override
     public void doAction(DroneCommunicator droneCommunicator,DroneState droneState) throws Exception {
-        
-        droneState.move();
+
+//        droneState.move();
         String request= "flip "+ direction;
 
         droneCommunicator.sendRequest(request);
