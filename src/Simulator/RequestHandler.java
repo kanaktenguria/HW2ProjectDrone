@@ -2,7 +2,7 @@ package Simulator;
 
 import Communicator.DroneCommunicator;
 
-public class CommandHandler {
+public class RequestHandler {
     public void selectCommand(String reply, DroneCommunicator droneCommunicator) throws Exception {
         String[] keyword=reply.split(" ");
 
