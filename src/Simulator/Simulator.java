@@ -1,14 +1,6 @@
 package Simulator;
 
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
-import Message.Status;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.Scanner;
+import Common.DroneState;
 
 public class Simulator{
 

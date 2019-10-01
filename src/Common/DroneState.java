@@ -1,4 +1,4 @@
-package Communicator;
+package Common;
 
 import Message.Status;
 

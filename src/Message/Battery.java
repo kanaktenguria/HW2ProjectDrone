@@ -1,7 +1,7 @@
 package Message;
 
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
+import Common.DroneCommunicator;
+import Common.DroneState;
 
 public class Battery extends Message {
 //    String battery=null;

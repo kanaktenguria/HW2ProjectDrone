@@ -1,6 +1,6 @@
 package Message;
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
+import Common.DroneCommunicator;
+import Common.DroneState;
 
 public class TakeOff extends Message {
 //    private DroneCommunicator droneCommunicator;

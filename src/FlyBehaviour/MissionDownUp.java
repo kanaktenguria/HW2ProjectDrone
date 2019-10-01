@@ -1,7 +1,5 @@
 package FlyBehaviour;
-import Communicator.DroneState;
 import Message.*;
-import Communicator.DroneCommunicator;
 
 public class MissionDownUp extends FlyBehaviour {
 

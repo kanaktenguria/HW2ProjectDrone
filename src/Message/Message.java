@@ -1,5 +1,6 @@
 package Message;
-import Communicator.*;
+import Common.DroneCommunicator;
+import Common.DroneState;
 
 import java.nio.charset.StandardCharsets;
 

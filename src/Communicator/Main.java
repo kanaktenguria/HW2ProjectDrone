@@ -1,5 +1,6 @@
 package Communicator;
 
+import Common.DroneState;
 import ReadMissionFile.ReadMissionFile;
 import ReadMissionFile.*;
 import java.util.Scanner;
@@ -16,29 +17,29 @@ public class Main {
         System.out.print("Enter senders port Number:");
         int senderPort = scan.nextInt();
         System.out.println("1. Load mission from CSV file");
-        System.out.println("2. Load mission from XML file"); //downuprotate
+        System.out.println("2. Load mission from XML file");
         System.out.println("3. Execute pre existing mission:");
-//        //leftrotateright
         System.out.print("Enter number:");
 
         int fileType= scan.nextInt();
-        Flier flier=new Flier();
-        flier.setDroneState(droneState);
-        flier.initialize(IPAddress, senderPort);
-        Thread thread= new Thread(flier);
+        RequestSender requestSender =new RequestSender(droneState);
+//        requestSender.setDroneState(droneState);
+        StateReceiver stateReceiver= new StateReceiver(droneState);
+        requestSender.initialize(IPAddress, senderPort);
+        Thread thread= new Thread(stateReceiver);
         thread.start();
         Thread.sleep(5000);
 
         if(fileType==1){
             ReadCSV readCSV= new ReadCSV();
             readMissionFile= readCSV;
-            flier.readFile(readMissionFile);
+            requestSender.readFile(readMissionFile);
         }
 
         if(fileType==2){
             ReadXML readXML= new ReadXML();
             readMissionFile= readXML;
-            flier.readFile(readMissionFile);
+            requestSender.readFile(readMissionFile);
         }
 
         if(fileType==3){
@@ -46,7 +47,7 @@ public class Main {
             System.out.println("2. Move Forward, Move Left, Move Backward");
             System.out.println("3. Move Left, Move Anti Clockwise, Move Right");
             int missionChoice= scan.nextInt();
-            flier.executePreExistingMission(missionChoice);
+            requestSender.executePreExistingMission(missionChoice);
         }
 
     }

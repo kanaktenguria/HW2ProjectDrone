@@ -1,6 +1,6 @@
 package Simulator;
 
-import Communicator.DroneCommunicator;
+import Common.DroneCommunicator;
 
 public class RequestHandler {
     public void selectCommand(String reply, DroneCommunicator droneCommunicator) throws Exception {

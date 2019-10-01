@@ -1,8 +1,7 @@
 package ReadMissionFile;
 
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
-import Message.Message;
+import Common.DroneCommunicator;
+import Common.DroneState;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;

@@ -1,7 +1,7 @@
 package Message;
 
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
+import Common.DroneCommunicator;
+import Common.DroneState;
 import Communicator.StringUtils;
 
 public class Status extends Message {

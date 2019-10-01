@@ -1,7 +1,7 @@
 package ReadMissionFile;
 
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
+import Common.DroneCommunicator;
+import Common.DroneState;
 import Message.*;
 
 import java.util.Scanner;

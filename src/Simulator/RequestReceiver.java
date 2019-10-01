@@ -1,7 +1,7 @@
 package Simulator;
 
-import Communicator.DroneCommunicator;
-import Communicator.DroneState;
+import Common.DroneCommunicator;
+import Common.DroneState;
 
 import java.net.InetAddress;
 

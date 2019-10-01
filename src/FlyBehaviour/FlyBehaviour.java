@@ -1,5 +1,6 @@
 package FlyBehaviour;
-import Communicator.*;
+import Common.DroneCommunicator;
+import Common.DroneState;
 import Message.*;
 
 public abstract class FlyBehaviour {

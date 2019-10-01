@@ -1,6 +1,5 @@
 package FlyBehaviour;
 import Message.*;
-import Communicator.DroneCommunicator;
 
 public class MissionForwardLeft extends FlyBehaviour {
 //    public MissionForwardLeft(){
