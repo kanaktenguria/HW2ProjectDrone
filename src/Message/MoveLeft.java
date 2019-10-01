@@ -16,6 +16,11 @@ public class MoveLeft extends Message {
         String request= "left "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");
+        double yAxis=droneState.getPositionY();
+        double xAxis=x;
+        xAxis+=droneState.getPositionX();
+        double zAxis=droneState.getPositionZ();
+        droneState.move(xAxis,yAxis,zAxis);
 //        droneCommunicator.getState();
         Thread.sleep(5000);
     }

@@ -16,6 +16,12 @@ public class MoveUp extends Message {
         String request= "up "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");
+        double yAxis=droneState.getPositionY();
+        double xAxis=droneState.getPositionX();
+        double zAxis=x;
+        zAxis+=droneState.getPositionZ();
+
+        droneState.move(xAxis,yAxis,zAxis);
         Thread.sleep(5000);
     }
 
