@@ -1,18 +1,17 @@
 package ReadMissionFile;
 
 import Communicator.DroneCommunicator;
+import Communicator.DroneState;
+import Message.Message;
 import org.w3c.dom.*;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.IOException;
 
 public class ReadXML extends ReadMissionFile {
     @Override
-    public void readFile(DroneCommunicator droneCommunicator) throws Exception {
+    public void readFile(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new File("src/testXML.xml"));
@@ -27,6 +26,6 @@ public class ReadXML extends ReadMissionFile {
             {   result[temp] =node.getTextContent();
             }
         }
-        executeMission(droneCommunicator, result);
+        executeMission(droneCommunicator, result, droneState);
     }
 }

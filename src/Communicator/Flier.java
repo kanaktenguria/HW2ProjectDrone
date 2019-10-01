@@ -18,7 +18,10 @@ class Flier implements Runnable{
     }
     public void initialize(String IPAddress, int senderPort) throws Exception {
         droneCommunicator = new DroneCommunicator(IPAddress, senderPort);
-        droneCommunicator.initialize();  }
+        droneCommunicator.initialize();
+        droneState.setInCommandMode(true);
+
+    }
 
 //    void droneTakeoff(FlyBehaviour flyBehaviour) throws Exception {
 //        flyBehaviour.droneTakeoff(droneCommunicator);
@@ -29,7 +32,11 @@ class Flier implements Runnable{
 
     void readFile(ReadMissionFile readMissionFile) throws Exception {
 //        System.out.println("Battery="+ status.getBatteryPercentage() );
-        readMissionFile.readFile(droneCommunicator);
+
+
+//        System.out.println(droneState.getBatteryPercentage());
+        readMissionFile.readFile(droneCommunicator, droneState);
+        
 //        Message message= Message.missionAction(result);
 
     }
@@ -48,11 +55,15 @@ class Flier implements Runnable{
 //            State.initializeFlyer(8890);
                 String reply = State.receiveRequest();
                 this.status = new Status(reply);
+                setStatus(status);
 //                System.out.println(reply);
+
                 droneState.updateFlyingInfo(this.status);
-                byte[] bytesReceived=droneCommunicator.getBytesReceived();
-//                status.getMessageText();
-                status.decode(bytesReceived,0,1024);
+//                System.out.println(status.getBatteryPercentage());
+//                System.out.println(droneState.getBatteryPercentage());
+//                byte[] bytesReceived=droneCommunicator.getBytesReceived();
+////                status.getMessageText();
+//                status.decode(bytesReceived,0,1024);
 
 //                System.out.println("kanak"+ reply);
             } catch (Exception e) {
@@ -65,6 +76,10 @@ class Flier implements Runnable{
                 e.printStackTrace();
             }
         }
+    }
+
+    public void setStatus(Status status){
+        this.status=status;
     }
 //    void getState() throws Exception{
 //

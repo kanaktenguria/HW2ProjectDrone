@@ -11,17 +11,16 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Simulator implements Runnable{
-    public Simulator(){
 
-    }
     public static void main(String[] args) throws Exception {
+        DroneState droneState = new DroneState();
         Simulator sendState= new Simulator();
         Thread thread= new Thread(sendState);
         thread.start();
-        Boolean commandMode= false;
-        Boolean takenOff= false;
+//        Boolean commandMode= false;
+//        Boolean takenOff= false;
         DroneCommunicator droneCommunicator= new DroneCommunicator(8889);
-        DroneState droneState = new DroneState();
+
 //        droneCommunicator.initializeSimulator(8889);
         while(true) {
             String reply = droneCommunicator.receiveRequest();
@@ -29,11 +28,11 @@ public class Simulator implements Runnable{
             InetAddress senderAddress = droneCommunicator.getSenderAddress();
             int destinationPort = droneCommunicator.getDestinationPort();
             droneCommunicator.setAddress(senderAddress, destinationPort);
+//            if(reply.equals("command")){
+//                commandMode=true;
+//            }
             CommandHandler commandHandler= new CommandHandler();
             commandHandler.selectCommand(reply, droneCommunicator);
-
-
-
 
 //            System.out.println("Inside simulator" + reply);
 //            if (reply.equals("command")) {
@@ -52,14 +51,13 @@ public class Simulator implements Runnable{
 //            }
 
         }
-
-
-
     }
 
     @Override
     public void run() {
-        Status sendStatus= new Status(0,0,1,10,10,10,5,50,40,80,99,15.2,56,25.5,25.5,25.5);
+
+
+        Status sendStatus= new Status(0,0,1,10,10,10,5,90,40,80,30,15.2,56,25.5,25.5,25.5);
         String currentStatus=sendStatus.getMessageText();
         DroneCommunicator sendStatusCommunicator= null;
         try {

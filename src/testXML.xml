@@ -1,6 +1,6 @@
 <mission>
     <task>takeoff</task>
-    <task>up</task>
+    <task>flip</task>
     <task>cw</task>
     <task>land</task>
 </mission>

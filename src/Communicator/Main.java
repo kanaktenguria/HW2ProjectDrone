@@ -44,9 +44,9 @@ public class Main {
 //            MissionDownUpRotate missionDownUpRotate=new MissionDownUpRotate();
 //            flyBehaviour= missionDownUpRotate;
         }
-        if(fileType==3){
-
-        }
+//        if(fileType==3){
+//
+//        }
 //
 //        if(missionNumber==3){
 //            MissionLeftRotateRight missionLeftRotateRight=new MissionLeftRotateRight();
@@ -54,11 +54,12 @@ public class Main {
 //        }
 
         Flier flier=new Flier();
-        Thread thread= new Thread(flier);
 
-        flier.initialize(IPAddress, senderPort);
         flier.setDroneState(droneState);
+        flier.initialize(IPAddress, senderPort);
+        Thread thread= new Thread(flier);
         thread.start();
+        Thread.sleep(5000);
 //        flier.droneTakeoff(flyBehaviour);
 //        flier.doMission(flyBehaviour);
         flier.readFile(readMissionFile);
