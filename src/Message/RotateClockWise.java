@@ -1,5 +1,6 @@
 package Message;
 import Communicator.DroneCommunicator;
+import Communicator.DroneState;
 
 public class RotateClockWise extends Message {
 //    private DroneCommunicator droneCommunicator;
@@ -14,7 +15,7 @@ public class RotateClockWise extends Message {
     }
 
     @Override
-    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+    public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
         String request= "cw "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");

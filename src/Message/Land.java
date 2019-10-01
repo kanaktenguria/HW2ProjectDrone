@@ -1,5 +1,6 @@
 package Message;
 import Communicator.DroneCommunicator;
+import Communicator.DroneState;
 
 public class Land extends Message {
 //    private DroneCommunicator droneCommunicator;
@@ -8,7 +9,7 @@ public class Land extends Message {
 //    }
 
     @Override
-    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+    public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
         droneCommunicator.sendRequest("land");
         System.out.println(droneCommunicator.receiveRequest()+"received");
 //        droneCommunicator.getState();

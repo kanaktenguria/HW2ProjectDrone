@@ -1,6 +1,7 @@
 package Message;
 
 import Communicator.DroneCommunicator;
+import Communicator.DroneState;
 import Communicator.StringUtils;
 
 public class Status extends Message {
@@ -68,7 +69,7 @@ public class Status extends Message {
     }
 
     @Override
-    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+    public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
 
     }
 

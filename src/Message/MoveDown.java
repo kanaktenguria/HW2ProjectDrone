@@ -1,5 +1,6 @@
 package Message;
 import Communicator.DroneCommunicator;
+import Communicator.DroneState;
 
 public class MoveDown extends Message {
 //    private DroneCommunicator droneCommunicator;
@@ -11,7 +12,7 @@ int x;
         this.x=x;
     }
     @Override
-    public void doAction(DroneCommunicator droneCommunicator) throws Exception {
+    public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
         String request= "down "+x;
         droneCommunicator.sendRequest(request);
         System.out.println(droneCommunicator.receiveRequest()+"received");

@@ -4,7 +4,7 @@ import Communicator.*;
 import java.nio.charset.StandardCharsets;
 
 public abstract class Message {
-    public abstract void doAction(DroneCommunicator droneCommunicator) throws Exception;
+    public abstract void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception;
 
     private boolean valid = true;
 

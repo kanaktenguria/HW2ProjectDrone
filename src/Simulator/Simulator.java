@@ -57,7 +57,7 @@ public class Simulator implements Runnable{
     public void run() {
 
 
-        Status sendStatus= new Status(0,0,1,10,10,10,5,90,40,80,30,15.2,56,25.5,25.5,25.5);
+        Status sendStatus= new Status(0,0,1,10,10,10,5,50,40,80,90,15.2,56,25.5,25.5,25.5);
         String currentStatus=sendStatus.getMessageText();
         DroneCommunicator sendStatusCommunicator= null;
         try {
