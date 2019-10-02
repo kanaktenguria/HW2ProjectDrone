@@ -28,6 +28,11 @@ public class MoveRight extends Message {
             String request = "right " + x;
             droneCommunicator.sendRequest(request);
             System.out.println(droneCommunicator.receiveRequest() + "received");
+
+            if(droneState.getPositionX()>200 || droneState.getPositionY()>200){
+                System.out.println("Drone stepping outside 2 meter radius, Stopping for 3 seconds.");
+                Thread.sleep(3000);
+            }
             double xAxis = -x;
             droneState.move(xAxis, 0, 0);
             Thread.sleep(5000);

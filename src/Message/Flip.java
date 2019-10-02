@@ -29,6 +29,10 @@ public class Flip extends Message{
                 Scanner scan = new Scanner(System.in);
                 int x = scan.nextInt();
                 String request = "forward " + x;
+                if(droneState.getPositionX()>200 || droneState.getPositionY()>200){
+                    System.out.println("Drone stepping outside 2 meter radius, Stopping for 3 seconds.");
+                    Thread.sleep(3000);
+                }
                 droneCommunicator.sendRequest(request);
                 System.out.println(droneCommunicator.receiveRequest() + "received");
                 double yAxis = x;

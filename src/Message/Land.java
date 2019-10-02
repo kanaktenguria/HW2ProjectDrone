@@ -16,7 +16,7 @@ public class Land extends Message {
         double xAxis=droneState.getPositionX();
         double yAxis=droneState.getPositionY();
         System.out.println(xAxis+","+yAxis+","+zAxis);
-        zAxis=-80.0;
+        zAxis=0.0;
         droneState.move(xAxis,yAxis,zAxis);
         Thread.sleep(5000);
     }

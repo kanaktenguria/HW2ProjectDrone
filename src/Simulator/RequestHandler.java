@@ -20,7 +20,7 @@ public class RequestHandler {
             correctCommand=true;
         }
         else if (keyword[0].equals("right")) {
-            System.out.println("Drone has moved "+keyword+"cm");
+            System.out.println("Drone has moved "+keyword.toString()+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("left")) {
@@ -40,11 +40,11 @@ public class RequestHandler {
             correctCommand=true;
         }
         else if (keyword[0].equals("ccw")) {
-            System.out.println("Drone has rotated anti clockwise"+keyword[1]+"degree");
+            System.out.println("Drone has rotated anti clockwise"+keyword[1].toString()+"degree");
             correctCommand=true;
         }
         else if (keyword[0].equals("cw")) {
-            System.out.println("Drone has rotated clockwise"+keyword[1]+"degree");
+            System.out.println("Drone has rotated clockwise"+keyword[1].toString()+"degree");
             correctCommand=true;
         }
         else if (keyword[0].equals("flip")) {
