@@ -10,13 +10,16 @@ public class TakeOff extends Message {
 
     @Override
     public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
-
-        droneCommunicator.sendRequest("takeoff");
-        System.out.println(droneCommunicator.receiveRequest()+"received");
-        double zAxis=80;
-        droneState.move(0.0,0.0,zAxis);
-//        droneCommunicator.getState();
-        Thread.sleep(5000);
+        if(droneState.getBatteryPercentage()<=10 || droneState.getHighTemperature()>=70) {
+            System.out.println("Either Battery low or High temperature. Mission aborted");
+        }else {
+            droneState.setHasTakenOff(true);
+            droneCommunicator.sendRequest("takeoff");
+            System.out.println(droneCommunicator.receiveRequest() + "received");
+            double zAxis = 80;
+            droneState.move(0.0, 0.0, zAxis);
+            Thread.sleep(5000);
+        }
     }
 
     @Override

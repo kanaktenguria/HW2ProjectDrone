@@ -2,6 +2,7 @@ package ReadMissionFile;
 
 import Common.DroneCommunicator;
 import Common.DroneState;
+import Message.Message;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -11,6 +12,7 @@ import java.io.File;
 public class ReadXML extends ReadMissionFile {
     @Override
     public void readFile(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
+//        Message message = null;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new File("src/testXML.xml"));
@@ -25,6 +27,9 @@ public class ReadXML extends ReadMissionFile {
             {   result[temp] =node.getTextContent();
             }
         }
-        executeMission(droneCommunicator, result, droneState);
+        Message actionArray[]=executeMission(droneCommunicator,result, droneState);
+        for (int i = 0; i < result.length; i++){
+            actionArray[i].doAction(droneCommunicator,droneState);
+        }
     }
 }
