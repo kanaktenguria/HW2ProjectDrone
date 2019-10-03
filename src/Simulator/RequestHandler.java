@@ -16,39 +16,39 @@ public class RequestHandler {
             correctCommand=true;
         }
         else if (keyword[0].equals("up")) {
-            System.out.println("Drone has moved "+keyword.toString()+"cm");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("right")) {
-            System.out.println("Drone has moved "+keyword.toString()+"cm");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("left")) {
-            System.out.println("Drone has moved "+keyword.toString()+"cm");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("down")) {
-            System.out.println("Drone has moved "+keyword.toString()+"cm");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("back")) {
-            System.out.println("Drone has moved "+keyword.toString()+"cm");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("forward")) {
-            System.out.println("Drone has moved "+keyword.toString()+"cm");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"cm");
             correctCommand=true;
         }
         else if (keyword[0].equals("ccw")) {
-            System.out.println("Drone has rotated anti clockwise"+keyword[1].toString()+"degree");
+            System.out.println("Drone has rotated anti clockwise"+keyword[1]+"degree");
             correctCommand=true;
         }
         else if (keyword[0].equals("cw")) {
-            System.out.println("Drone has rotated clockwise"+keyword[1].toString()+"degree");
+            System.out.println("Drone has rotated clockwise"+keyword[1]+"degree");
             correctCommand=true;
         }
         else if (keyword[0].equals("flip")) {
-            System.out.println("Drone has moved "+keyword.toString()+"direction");
+            System.out.println("Drone has moved "+keyword[0]+" "+keyword[1]+"direction");
             correctCommand=true;
         }
         else if (keyword[0].equals("land")) {

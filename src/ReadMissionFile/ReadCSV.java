@@ -1,7 +1,7 @@
 package ReadMissionFile;
 import Common.DroneCommunicator;
 import Common.DroneState;
-import Message.Message;
+import Action.Action;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ public class ReadCSV extends ReadMissionFile {
         String fileName;
         fileName = br.readLine();
         String[] result = fileName.split(",");
-        Message actionArray[]=executeMission(droneCommunicator,result, droneState);
+        Action actionArray[]=executeMission(droneCommunicator,result, droneState);
         for (int i = 0; i < result.length; i++){
             actionArray[i].doAction(droneCommunicator,droneState);
         }

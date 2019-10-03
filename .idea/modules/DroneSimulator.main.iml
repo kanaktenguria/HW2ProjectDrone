@@ -4,10 +4,6 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../DroneSimulator/build/classes/java/main" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../DroneSimulator/src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../DroneSimulator/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../DroneSimulator/src/main/resources" type="java-resource" />
-    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

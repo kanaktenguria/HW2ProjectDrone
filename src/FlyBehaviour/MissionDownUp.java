@@ -1,5 +1,5 @@
 package FlyBehaviour;
-import Message.*;
+import Action.*;
 
 public class MissionDownUp extends FlyBehaviour {
 
@@ -30,10 +30,10 @@ public class MissionDownUp extends FlyBehaviour {
 
     @Override
     public void doMission() throws Exception {
-        message=new MoveDown();
-        message.doAction(droneCommunicator,droneState);
-        message= new MoveUp();
-        message.doAction(droneCommunicator,droneState);
+        action =new MoveDown();
+        action.doAction(droneCommunicator,droneState);
+        action = new MoveUp();
+        action.doAction(droneCommunicator,droneState);
 //        message=new RotateClockWise();
 //        message.doAction(droneCommunicator,droneState);
     }

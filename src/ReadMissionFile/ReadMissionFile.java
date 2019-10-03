@@ -2,9 +2,9 @@ package ReadMissionFile;
 
 import Common.DroneCommunicator;
 import Common.DroneState;
-import Message.*;
+import Action.*;
+import Message.Status;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class ReadMissionFile {
@@ -15,10 +15,10 @@ public abstract class ReadMissionFile {
 //        this.status=status;
 //    }
 
-    public Message[] executeMission(DroneCommunicator droneCommunicator, String[] result, DroneState droneState) throws Exception {
+    public Action[] executeMission(DroneCommunicator droneCommunicator, String[] result, DroneState droneState) throws Exception {
 
         Scanner scan= new Scanner(System.in);
-            Message actionArray[]= new Message[result.length];
+            Action actionArray[]= new Action[result.length];
 
             for (int i = 0; i < result.length; i++) {
 

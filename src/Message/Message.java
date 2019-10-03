@@ -1,12 +1,8 @@
 package Message;
-import Common.DroneCommunicator;
-import Common.DroneState;
 
 import java.nio.charset.StandardCharsets;
 
 public abstract class Message {
-    public abstract void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception;
-
     private boolean valid = true;
 
     public static Message decode(byte[] bytes, int offset, int length) {

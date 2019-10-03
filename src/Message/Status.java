@@ -1,8 +1,6 @@
 package Message;
 
-import Common.DroneCommunicator;
-import Common.DroneState;
-import Communicator.StringUtils;
+import Flyer.StringUtils;
 
 public class Status extends Message {
     public static String getKeyWord() { return "mid"; }
@@ -66,11 +64,6 @@ public class Status extends Message {
                 StringUtils.formatInteger(batteryPercentage), StringUtils.formatDouble(barometerMeasurement),
                 StringUtils.formatInteger(motorTime),
                 StringUtils.formatDouble(accelerationX), StringUtils.formatDouble(accelerationY), StringUtils.formatDouble(accelerationZ));
-    }
-
-    @Override
-    public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
-
     }
 
     @Override

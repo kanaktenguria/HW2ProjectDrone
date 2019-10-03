@@ -2,7 +2,7 @@ package ReadMissionFile;
 
 import Common.DroneCommunicator;
 import Common.DroneState;
-import Message.Message;
+import Action.Action;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -27,7 +27,7 @@ public class ReadXML extends ReadMissionFile {
             {   result[temp] =node.getTextContent();
             }
         }
-        Message actionArray[]=executeMission(droneCommunicator,result, droneState);
+        Action actionArray[]=executeMission(droneCommunicator,result, droneState);
         for (int i = 0; i < result.length; i++){
             actionArray[i].doAction(droneCommunicator,droneState);
         }

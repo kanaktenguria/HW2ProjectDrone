@@ -1,16 +1,16 @@
 package FlyBehaviour;
-import Message.*;
+import Action.*;
 
 public class MissionLeftRotateRight extends FlyBehaviour {
 
     @Override
     public void doMission() throws Exception {
-        message=new MoveLeft();
-        message.doAction(droneCommunicator,droneState);
-        message= new RotateAntiClockWise();
-        message.doAction(droneCommunicator,droneState);
-        message=new MoveRight();
-        message.doAction(droneCommunicator,droneState);
+        action =new MoveLeft();
+        action.doAction(droneCommunicator,droneState);
+        action = new RotateAntiClockWise();
+        action.doAction(droneCommunicator,droneState);
+        action =new MoveRight();
+        action.doAction(droneCommunicator,droneState);
     }
 
 

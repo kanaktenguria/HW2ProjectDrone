@@ -1,13 +1,13 @@
 package FlyBehaviour;
 import Common.DroneCommunicator;
 import Common.DroneState;
-import Message.*;
+import Action.*;
 
 public abstract class FlyBehaviour {
 
     DroneCommunicator droneCommunicator;
     DroneState droneState;
-    Message message;
+    Action action;
 
     public void setDroneCommunicatorAndState(DroneCommunicator droneCommunicator, DroneState droneState){
         this.droneCommunicator= droneCommunicator;
@@ -34,15 +34,15 @@ public abstract class FlyBehaviour {
         }
         else{
             droneState.setHasTakenOff(true);
-            message = new TakeOff();
-            message.doAction(droneCommunicator,droneState);
+            action = new TakeOff();
+            action.doAction(droneCommunicator,droneState);
         }
     }
 
     public abstract void doMission() throws Exception;
 
     public void droneLand() throws Exception {
-        message = new Land();
-        message.doAction(droneCommunicator,droneState);
+        action = new Land();
+        action.doAction(droneCommunicator,droneState);
     }
 }

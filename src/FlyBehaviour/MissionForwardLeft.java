@@ -1,5 +1,5 @@
 package FlyBehaviour;
-import Message.*;
+import Action.*;
 
 public class MissionForwardLeft extends FlyBehaviour {
 //    public MissionForwardLeft(){
@@ -25,12 +25,12 @@ public class MissionForwardLeft extends FlyBehaviour {
 
     @Override
     public void doMission() throws Exception {
-        message=new MoveForward();
-        message.doAction(droneCommunicator,droneState);
-        message= new MoveLeft();
-        message.doAction(droneCommunicator,droneState);
-        message=new MoveBackward();
-        message.doAction(droneCommunicator,droneState);
+        action =new MoveForward();
+        action.doAction(droneCommunicator,droneState);
+        action = new MoveLeft();
+        action.doAction(droneCommunicator,droneState);
+        action =new MoveBackward();
+        action.doAction(droneCommunicator,droneState);
     }
 
 }
