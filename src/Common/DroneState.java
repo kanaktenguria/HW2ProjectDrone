@@ -36,6 +36,8 @@ public class DroneState {
         resetState();
     }
 
+    public boolean isInCommandMode() { return inCommandMode; }
+
     public void setInCommandMode(boolean inCommandMode) {
         if (this.inCommandMode == inCommandMode)
             return;
@@ -45,6 +47,9 @@ public class DroneState {
             resetState();
     }
 
+    public boolean hasTakenOff() {
+        return hasTakenOff;
+    }
     public void setHasTakenOff(boolean hasTakenOff) {
         if (this.hasTakenOff == hasTakenOff)
             return;
@@ -166,8 +171,6 @@ public class DroneState {
     public Integer getMotorTime() {
         return motorTime;
     }
-
-    public int getOrientation() { return orientation; }
 
     private void resetState() {
         videoStreamOn = false;
