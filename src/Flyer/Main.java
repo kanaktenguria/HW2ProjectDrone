@@ -23,7 +23,6 @@ public class Main {
 
         int fileType= scan.nextInt();
         RequestSender requestSender =new RequestSender(droneState);
-//        requestSender.setDroneState(droneState);
         StateReceiver stateReceiver= new StateReceiver(droneState);
         requestSender.initialize(IPAddress, senderPort);
         Thread thread= new Thread(stateReceiver);
