@@ -8,7 +8,7 @@ import FlyBehaviour.MissionDownUp;
 import FlyBehaviour.MissionForwardLeft;
 import FlyBehaviour.MissionLeftRotateRight;
 
-class RequestSender {
+public class RequestSender {
     private DroneState droneState;
     private DroneCommunicator droneCommunicator;
 

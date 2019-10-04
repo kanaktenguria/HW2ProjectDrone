@@ -1,25 +1,28 @@
-package Flyer;
+package FlyBehaviour;
 
 import Common.DroneCommunicator;
 import Common.DroneState;
+import Flyer.RequestSender;
 import org.junit.jupiter.api.Test;
 
 import java.net.InetAddress;
 
-class RequestSenderTest {
-        @Test
-        public void testRequestSender() throws Exception{
-            MockServer testDummy = new MockServer();
-            MockReceiver testClient= new MockReceiver();
-            Thread testReceiver = new Thread(testDummy);
-            Thread testRespond= new Thread(testClient);
-            testReceiver.start();
-            testRespond.start();
-        }
+import static org.junit.jupiter.api.Assertions.*;
+
+class MissionForwardLeftTest {
+    @Test
+    public void testMissionDownUp() throws Exception{
+        MockSenderMissionTwo testDummy = new MockSenderMissionTwo();
+        MockReceiverMissionTwo testClient= new MockReceiverMissionTwo();
+        Thread testReceiver = new Thread(testDummy);
+        Thread testRespond= new Thread(testClient);
+        testReceiver.start();
+        testRespond.start();
+    }
 
 }
 
-class MockReceiver implements Runnable{
+class MockSenderMissionTwo implements Runnable{
 
     @Override
     public void run() {
@@ -27,15 +30,15 @@ class MockReceiver implements Runnable{
             DroneState droneState = new DroneState();
             String IPAddress = "127.0.0.1";
             int senderPort = 7790;
-            RequestSender requestSender = new RequestSender(droneState);
+            RequestSender requestSender= new RequestSender(droneState);
             requestSender.initialize(IPAddress, senderPort);
-            requestSender.executePreExistingMission(1);
+            requestSender.executePreExistingMission(2);
         }catch(Exception e){
 
         }
     }
 }
-class MockServer implements Runnable{
+class MockReceiverMissionTwo implements Runnable{
     @Override
     public void run() {
         DroneCommunicator droneCommunicator = null;
