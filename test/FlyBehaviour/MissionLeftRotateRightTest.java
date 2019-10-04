@@ -9,11 +9,11 @@ import java.net.InetAddress;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MissionForwardLeftTest {
+class MissionLeftRotateRightTest {
     @Test
-    public void testMissionForwardLeft() throws Exception{
-        MockSenderMissionTwo testDummy = new MockSenderMissionTwo();
-        MockReceiverMissionTwo testClient= new MockReceiverMissionTwo();
+    public void testMissionLeftRotate() throws Exception{
+        MockSenderMissionThree testDummy = new MockSenderMissionThree();
+        MockReceiverMissionThree testClient= new MockReceiverMissionThree();
         Thread testReceiver = new Thread(testDummy);
         Thread testRespond= new Thread(testClient);
         testReceiver.start();
@@ -22,7 +22,7 @@ class MissionForwardLeftTest {
 
 }
 
-class MockSenderMissionTwo implements Runnable{
+class MockSenderMissionThree implements Runnable{
 
     @Override
     public void run() {
@@ -32,13 +32,13 @@ class MockSenderMissionTwo implements Runnable{
             int senderPort = 7790;
             RequestSender requestSender= new RequestSender(droneState);
             requestSender.initialize(IPAddress, senderPort);
-            requestSender.executePreExistingMission(2);
+            requestSender.executePreExistingMission(3);
         }catch(Exception e){
 
         }
     }
 }
-class MockReceiverMissionTwo implements Runnable{
+class MockReceiverMissionThree implements Runnable{
     @Override
     public void run() {
         DroneCommunicator droneCommunicator = null;
