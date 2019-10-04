@@ -13,13 +13,13 @@ class DroneCommunicatorTest {
 
     @Test
     public void testSendReceiveAndGetterSetter() throws Exception {
-        DroneCommunicator sender= new DroneCommunicator("127.0.0.1",9090);
-        DroneCommunicator receiver= new DroneCommunicator(9090);
+        DroneCommunicator sender= new DroneCommunicator("127.0.0.1",9292);
+        DroneCommunicator receiver= new DroneCommunicator(9292);
         InetAddress IPAddress = InetAddress.getByName("127.0.0.1");
         String message= "hi";
         sender.sendRequest(message);
         assertEquals(receiver.receiveRequest(),message);
-        assertEquals(9090,sender.getDestinationPort());
+        assertEquals(9292,sender.getDestinationPort());
         assertEquals(IPAddress,receiver.getSenderAddress());
     }
 
@@ -31,15 +31,6 @@ class DroneCommunicatorTest {
         Thread.sleep(3000);
         serverThread.start();
     }
-
-//    @Test
-//    public void testInitialize() throws Exception {
-//        DroneCommunicator commandReceiver= new DroneCommunicator(10000);
-//        DroneCommunicator commandSender= new DroneCommunicator("127.0.0.1",10000);
-//        commandReceiver.sendRequest("ok");
-//        commandSender.initialize();
-//        assertEquals("command",commandReceiver.receiveRequest());
-//    }
 
 }
 
