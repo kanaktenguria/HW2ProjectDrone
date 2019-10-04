@@ -51,9 +51,11 @@ class RequestSender {
         readMissionFile.readFile(droneCommunicator, droneState);
    }
 
+    public FlyBehaviour getFlyBehaviour() {
+        return flyBehaviour;
+    }
 
-
-//    public void setStatus(Status status){
+    //    public void setStatus(Status status){
 //        this.status=status;
 //    }
 
