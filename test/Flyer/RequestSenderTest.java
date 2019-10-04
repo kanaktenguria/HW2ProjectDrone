@@ -14,7 +14,7 @@ class RequestSenderTest {
             Thread testSimulator= new Thread(testDummy);
             testSimulator.start();
             String IPAddress = "127.0.0.1";
-            int senderPort = 8889;
+            int senderPort = 7790;
             RequestSender requestSender =new RequestSender(droneState);
             requestSender.initialize(IPAddress, senderPort);
             requestSender.executePreExistingMission(1);
@@ -27,7 +27,7 @@ class MockServer implements Runnable{
     public void run() {
         DroneCommunicator droneCommunicator = null;
         try {
-            droneCommunicator = new DroneCommunicator(8889);
+            droneCommunicator = new DroneCommunicator(7790);
             droneCommunicator.receiveRequest();
             InetAddress senderAddress = droneCommunicator.getSenderAddress();
             int destinationPort = droneCommunicator.getDestinationPort();
