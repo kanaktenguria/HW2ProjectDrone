@@ -7,24 +7,24 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MoveLeftTest {
+class MoveRightTest {
     @Test
     public void testDoAction() throws Exception {
-        Thread mockSenderLeft= new Thread(new MockSenderLeft());
-        Thread mockReplierLeft= new Thread(new MockReplierUp());
-        mockReplierLeft.start();
-        mockSenderLeft.start();
+        Thread mockSenderRight= new Thread(new MockSenderRight());
+        Thread mockReplierRight= new Thread(new MockReplierRight());
+        mockReplierRight.start();
+        mockSenderRight.start();
         //Shows that connection is properly setup and doAction method is working properly. Otherwise it will give some king of exception.
     }
 
     @Test
     public void testGetMessageType(){
-        MoveLeft moveLeft= new MoveLeft();
-        assertNull(moveLeft.getMessageType());
+        MoveRight moveRight= new MoveRight();
+        assertNull(moveRight.getMessageType());
     }
 }
 
-class MockSenderLeft implements Runnable{
+class MockSenderRight implements Runnable{
 
     @Override
     public void run() {
@@ -35,15 +35,15 @@ class MockSenderLeft implements Runnable{
             droneState.setInCommandMode(true);
             droneState.setHasTakenOff(true);
             droneState.updateFlyingInfo(status);
-            MoveLeft moveLeft= new MoveLeft();
-            moveLeft.doAction(droneCommunicator, droneState);
+            MoveRight moveRight= new MoveRight();
+            moveRight.doAction(droneCommunicator, droneState);
         }catch(Exception E){
 
         }
     }
 
 }
-class MockReplierLeft implements Runnable{
+class MockReplierRight implements Runnable{
     String reply=null;
 
     @Override

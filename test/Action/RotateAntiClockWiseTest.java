@@ -7,24 +7,24 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MoveLeftTest {
+class RotateAntiClockWiseTest {
     @Test
     public void testDoAction() throws Exception {
-        Thread mockSenderLeft= new Thread(new MockSenderLeft());
-        Thread mockReplierLeft= new Thread(new MockReplierUp());
-        mockReplierLeft.start();
-        mockSenderLeft.start();
+        Thread mockSenderCCW= new Thread(new MockSenderCCW());
+        Thread mockReplierCCW= new Thread(new MockReplierCCW());
+        mockReplierCCW.start();
+        mockSenderCCW.start();
         //Shows that connection is properly setup and doAction method is working properly. Otherwise it will give some king of exception.
     }
 
     @Test
     public void testGetMessageType(){
-        MoveLeft moveLeft= new MoveLeft();
-        assertNull(moveLeft.getMessageType());
+        RotateAntiClockWise moveCCW= new RotateAntiClockWise();
+        assertNull(moveCCW.getMessageType());
     }
-}
 
-class MockSenderLeft implements Runnable{
+}
+class MockSenderCCW implements Runnable{
 
     @Override
     public void run() {
@@ -35,15 +35,15 @@ class MockSenderLeft implements Runnable{
             droneState.setInCommandMode(true);
             droneState.setHasTakenOff(true);
             droneState.updateFlyingInfo(status);
-            MoveLeft moveLeft= new MoveLeft();
-            moveLeft.doAction(droneCommunicator, droneState);
+            RotateAntiClockWise moveCCW= new RotateAntiClockWise();
+            moveCCW.doAction(droneCommunicator, droneState);
         }catch(Exception E){
 
         }
     }
 
 }
-class MockReplierLeft implements Runnable{
+class MockReplierCCW implements Runnable{
     String reply=null;
 
     @Override

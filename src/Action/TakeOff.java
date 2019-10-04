@@ -3,11 +3,6 @@ import Common.DroneCommunicator;
 import Common.DroneState;
 
 public class TakeOff extends Action {
-//    private DroneCommunicator droneCommunicator;
-//    public TakeOff(DroneCommunicator droneCommunicator) {
-//        this.droneCommunicator = droneCommunicator;
-//    }
-
     @Override
     public void doAction(DroneCommunicator droneCommunicator, DroneState droneState) throws Exception {
         if(droneState.getBatteryPercentage()<=10 || droneState.getHighTemperature()>=70) {
