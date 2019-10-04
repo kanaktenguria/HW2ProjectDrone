@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MoveBackwardTest {
     @Test
     public void testDoAction() throws Exception {
-        Thread mockSenderBack= new Thread(new MockSenderDown());
+        Thread mockSenderBack= new Thread(new MockSenderFlip());
         Thread mockReplierBack= new Thread(new MockReplierBack());
         mockReplierBack.start();
         mockSenderBack.start();
