@@ -16,8 +16,6 @@ public abstract class Message {
             if (data.startsWith(Status.getKeyWord()))
                 message = new Status(data);
 
-            // TODO: decode all of the other kinds of messages based on what the message starts with.  If it doesn't
-            //       start with a recognized key work, assume it is an info message (i.e., a reply to a query)
         }
         return message;
     }
