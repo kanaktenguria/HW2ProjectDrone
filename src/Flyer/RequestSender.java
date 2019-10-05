@@ -47,7 +47,7 @@ public class RequestSender {
         flyBehaviour.flyBehaviourTemplate();
     }
 
-    void readFile(ReadMissionFile readMissionFile) throws Exception {
+    public void readFile(ReadMissionFile readMissionFile) throws Exception {
         readMissionFile.readFile(droneCommunicator, droneState);
    }
 
