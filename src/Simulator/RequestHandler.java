@@ -3,10 +3,11 @@ package Simulator;
 import Common.DroneCommunicator;
 
 public class RequestHandler {
+    Boolean correctCommand= false;
     public void selectCommand(String reply, DroneCommunicator droneCommunicator) throws Exception {
         String[] keyword=reply.split(" ");
 
-        Boolean correctCommand= false;
+
         if (keyword[0].equals("command")) {
             System.out.println("Entering command mode.");
             correctCommand=true;
@@ -68,5 +69,9 @@ public class RequestHandler {
         else{
             droneCommunicator.sendRequest("error");
         }
+    }
+
+    public Boolean getCorrectCommand() {
+        return correctCommand;
     }
 }
